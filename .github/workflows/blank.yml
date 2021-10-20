@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Unit Test Status Check
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        cd api
+        python -m pip install --upgrade pip
+        make test
