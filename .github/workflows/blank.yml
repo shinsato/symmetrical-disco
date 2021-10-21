@@ -33,5 +33,6 @@ jobs:
       with:
         node-version: 15.1
         cache: 'npm'
+    - run: cd frontend
     - run: npm install
     - run: npm run test:unit
